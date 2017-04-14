@@ -26,6 +26,10 @@
             <td><?= $post->has('user') ? $this->Html->link($post->user->id, ['controller' => 'Users', 'action' => 'view', $post->user->id]) : '' ?></td>
         </tr>
         <tr>
+            <th scope="row"><?= __('Images') ?></th>
+            <td><?= h($post->images) ?></td>
+        </tr>
+        <tr>
             <th scope="row"><?= __('Id') ?></th>
             <td><?= $this->Number->format($post->id) ?></td>
         </tr>

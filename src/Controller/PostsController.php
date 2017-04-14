@@ -10,19 +10,26 @@ use App\Controller\AppController;
  */
 class PostsController extends AppController
 {
+    //public $components = array('Upload');
 
     /**
      * Index method
      *
      * @return \Cake\Network\Response|null
      */
+    public $components = array('Upload');
+
+    public function  showcompo(){
+        $data = $this->Data->randd(6);
+        $this->set("data",$data);
+    }
+
     public function index()
     {
         $this->paginate = [
             'contain' => ['Users']
         ];
         $posts = $this->paginate($this->Posts);
-
         $this->set(compact('posts'));
         $this->set('_serialize', ['posts']);
     }
@@ -53,7 +60,17 @@ class PostsController extends AppController
     {
         $post = $this->Posts->newEntity();
         if ($this->request->is('post')) {
+
             $post = $this->Posts->patchEntity($post, $this->request->data);
+
+            if (!empty($this->request->data)) {
+                $file_name = $this->Upload->upfile($this->request->data['images']);
+                if($file_name){
+                    $post['images'] = $file_name;
+                }
+
+            }
+            print_r($post);
             if ($this->Posts->save($post)) {
                 $this->Flash->success(__('The post has been saved.'));
 

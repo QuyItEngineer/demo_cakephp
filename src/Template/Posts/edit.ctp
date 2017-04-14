@@ -26,6 +26,10 @@
             echo $this->Form->input('body');
             echo $this->Form->input('user_id', ['options' => $users]);
         ?>
+        <p>Images:</p>
+        <?php 
+            echo $this->Form->file('images',array('multiple'));
+        ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
     <?= $this->Form->end() ?>

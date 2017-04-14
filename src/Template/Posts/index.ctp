@@ -21,23 +21,35 @@
                 <th scope="col"><?= $this->Paginator->sort('user_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('images') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
         <tbody>
+
             <?php foreach ($posts as $post): ?>
+
+            <?php $showImage = $post->images; ?>
+
             <tr>
                 <td><?= $this->Number->format($post->id) ?></td>
                 <td><?= h($post->title) ?></td>
                 <td><?= $post->has('user') ? $this->Html->link($post->user->id, ['controller' => 'Users', 'action' => 'view', $post->user->id]) : '' ?></td>
                 <td><?= h($post->created) ?></td>
                 <td><?= h($post->modified) ?></td>
+                <?php if($showImage != null): ?>
+                    <td><?= $this->Html->image('/webroot/img/uploads/'.$showImage) ?></td>
+                <?php elseif($showImage == null): ?>
+                    <td><?= h($post->images) ?></td>
+                <?php endif; ?>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $post->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $post->id]) ?>
                     <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $post->id], ['confirm' => __('Are you sure you want to delete # {0}?', $post->id)]) ?>
                 </td>
             </tr>
+            <!--<?php echo $this->Html->image('/webroot/img/uploads/boss.jpg')?>-->
+
             <?php endforeach; ?>
         </tbody>
     </table>

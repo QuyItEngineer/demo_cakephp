@@ -66,6 +66,9 @@ class PostsTable extends Table
             ->requirePresence('body', 'create')
             ->notEmpty('body');
 
+        $validator
+            ->allowEmpty('images');
+
         return $validator;
     }
 

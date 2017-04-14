@@ -12,13 +12,17 @@
     </ul>
 </nav>
 <div class="posts form large-9 medium-8 columns content">
-    <?= $this->Form->create($post) ?>
+    <?= $this->Form->create($post,array('enctype' => 'multipart/form-data')) ?>
     <fieldset>
         <legend><?= __('Add Post') ?></legend>
         <?php
             echo $this->Form->input('title');
             echo $this->Form->input('body');
             echo $this->Form->input('user_id', ['options' => $users]);
+        ?>
+        <p>Images:</p>
+        <?php
+         echo $this->Form->input('images', array('type' => 'file'));
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

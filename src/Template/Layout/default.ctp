@@ -53,18 +53,18 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand topnav" href="<?= $this->fetch('title') ?>">
-                    <?= $this->fetch('title') ?>
+                <a class="navbar-brand topnav" href="<?=$this->Url->build('/pages/index', true);?>">
+                    HOME
                 </a>
             </div>
             
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="#about">About</a>
+                        <a href="<?=$this->Url->build('/users/index', true);?>">USER</a>
                     </li>
                     <li>
-                        <a href="#services">Services</a>
+                        <a href="<?=$this->Url->build('/posts/index', true);?>">POST</a>
                     </li>
                     <li>
                         <a href="#contact">Contact</a>
@@ -85,7 +85,32 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <div class="container clearfix">
         <?= $this->fetch('content') ?>
     </div>
+    <!-- Footer -->
     <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="list-inline">
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li>
+                            <a href="#about">About</a>
+                        </li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li>
+                            <a href="#services">Services</a>
+                        </li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li>
+                            <a href="#contact">Contact</a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted small">Copyright &copy; QuyItEngineer Company 2014. All Rights Reserved</p>
+                </div>
+            </div>
+        </div>
     </footer>
 </body>
 </html>
