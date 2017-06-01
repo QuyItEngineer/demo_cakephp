@@ -2,7 +2,6 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
-use Cake\Event\Event;
 
 /**
  * Users Controller
@@ -107,15 +106,11 @@ class UsersController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
-
-    //login
-
     public function login(){
         if($this->Auth->user())
             return $this->redirect($this->Auth->redirectUrl());
         if ($this->request->is('post')) {
             $user = $this->Auth->identify();     
-
             if ($user) {
                 $this->Auth->setUser($user);
                  return $this->redirect(['controller' => 'posts']);
@@ -136,24 +131,5 @@ class UsersController extends AppController
     public function logout() {
         $this->Flash->success(__('You logouted success!...'));
         $this->redirect($this->Auth->logout());
-    }
-
-    public function register() {
-        $user = $this->Users->newEntity();
-        if($this->request->is('post')){
-            $user = $this->Users->patchEntity($user, $this->request->data);
-            if($this->Users->save($user)){
-                $this->Flash->success('You are registered and can login');
-                return $this->redirect(['action' => 'login']);
-            } else {
-                $this->Flash->error('You are not registered');
-            }
-        }
-        $this->set(compact('user'));
-        $this->set('_serialzie', ['user']);
-    }
-
-    public function beforeFilter(Event $event){
-        $this->Auth->allow(['register']);
     }
 }

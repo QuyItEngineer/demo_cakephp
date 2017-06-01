@@ -15,102 +15,12 @@
 
 $cakeDescription = 'CakePHP: the rapid development php framework';
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-    <?= $this->Html->charset() ?>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        <?= $cakeDescription ?>:
-        <?= $this->fetch('title') ?>
-    </title>
-    <?= $this->Html->meta('icon') ?>
 
-    
-    <?= $this->Html->css('bootstrap.min.css') ?>
-    <?= $this->Html->css('font-awesome.css') ?>
-    <?= $this->Html->css('landing-page.css') ?>
-    <?= $this->Html->css('font-awesome.min.css') ?>
-    
-
-    <?= $this->Html->css('base.css') ?>
-    <?= $this->Html->css('cake.css') ?>
-    <?= $this->Html->css('quy.css') ?>
-    <?= $this->fetch('meta') ?>
-    <?= $this->fetch('css') ?>
-    <?= $this->fetch('script') ?>
-</head>
-<body>
-    <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
-        <div class="container topnav">
-            
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">
-                        <h1><a href=""><?= $this->fetch('title') ?></a></h1>
-                    </span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand topnav" href="<?=$this->Url->build('/pages/index', true);?>">
-                    HOME
-                </a>
-            </div>
-            
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="<?=$this->Url->build('/users/index', true);?>">USER</a>
-                    </li>
-                    <li>
-                        <a href="<?=$this->Url->build('/posts/index', true);?>">POST</a>
-                    </li>
-                    <li>
-                        <a href="#contact">Contact</a>
-                    </li>
-                    <?php if ($logged):?>
-                        <li><?= $this->Html->link('LOGOUT', ['controller' => 'users', 'action' => 'logout'])?></li>
-                    <?php else: ?>
-                        <li><?= $this->Html->link('REGISTER', ['controller' => 'users', 'action' => 'register'])?></li>
-                    <?php endif; ?>
-                </ul>
-            </div>
-
-        </div>
-
-    </nav>
+<?php include('includes/header.php') ?>
 
     <?= $this->Flash->render() ?>
-    <div class="container clearfix">
+<!--     <div class="container clearfix"> -->
         <?= $this->fetch('content') ?>
-    </div>
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <ul class="list-inline">
-                        <li>
-                            <a href="#">Home</a>
-                        </li>
-                        <li class="footer-menu-divider">&sdot;</li>
-                        <li>
-                            <a href="#about">About</a>
-                        </li>
-                        <li class="footer-menu-divider">&sdot;</li>
-                        <li>
-                            <a href="#services">Services</a>
-                        </li>
-                        <li class="footer-menu-divider">&sdot;</li>
-                        <li>
-                            <a href="#contact">Contact</a>
-                        </li>
-                    </ul>
-                    <p class="copyright text-muted small">Copyright &copy; QuyItEngineer Company 2014. All Rights Reserved</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-</body>
-</html>
+<!--     </div> -->
+
+<?php include('includes/footer.php') ?>

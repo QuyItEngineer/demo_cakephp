@@ -5,7 +5,6 @@ use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
-use Cake\Auth\DefaultPasswordHasher;
 
 /**
  * Users Model
@@ -63,13 +62,17 @@ class UsersTable extends Table
             ->notEmpty('username');
 
         $validator
+            ->email('email')
+            ->requirePresence('email', 'create')
+            ->notEmpty('email');
+
+        $validator
             ->requirePresence('password', 'create')
             ->notEmpty('password');
 
         $validator
-            ->email('email')
-            ->requirePresence('email', 'create')
-            ->notEmpty('email');
+            ->requirePresence('role', 'create')
+            ->notEmpty('role');
 
         return $validator;
     }
@@ -88,7 +91,7 @@ class UsersTable extends Table
 
         return $rules;
     }
-    public function beforeSave(\Cake\Event\Event $event, \Cake\ORM\Entity $entity, 
+        public function beforeSave(\Cake\Event\Event $event, \Cake\ORM\Entity $entity, 
     \ArrayObject $options)
     {     
         if($entity->has('password')){

@@ -22,12 +22,16 @@
             <td><?= h($user->username) ?></td>
         </tr>
         <tr>
+            <th scope="row"><?= __('Email') ?></th>
+            <td><?= h($user->email) ?></td>
+        </tr>
+        <tr>
             <th scope="row"><?= __('Password') ?></th>
             <td><?= h($user->password) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Email') ?></th>
-            <td><?= h($user->email) ?></td>
+            <th scope="row"><?= __('Role') ?></th>
+            <td><?= h($user->role) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Id') ?></th>
@@ -53,6 +57,7 @@
                 <th scope="col"><?= __('User Id') ?></th>
                 <th scope="col"><?= __('Created') ?></th>
                 <th scope="col"><?= __('Modified') ?></th>
+                <th scope="col"><?= __('Images') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
             <?php foreach ($user->posts as $posts): ?>
@@ -63,6 +68,7 @@
                 <td><?= h($posts->user_id) ?></td>
                 <td><?= h($posts->created) ?></td>
                 <td><?= h($posts->modified) ?></td>
+                <td><?= h($posts->images) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['controller' => 'Posts', 'action' => 'view', $posts->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['controller' => 'Posts', 'action' => 'edit', $posts->id]) ?>

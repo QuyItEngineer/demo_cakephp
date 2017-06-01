@@ -1,0 +1,21 @@
+
+.width_project1 {
+    padding-top: 70px;
+    position: relative;
+    margin: 0 auto;
+    padding-bottom: 50px;
+}
+.row_in_header{
+    border-right: 1px solid #000
+}
+.row.phan_dau {
+    border-top: 1px solid #000
+    /*border-bottom: 1px solid #000*/;
+    padding-top: 10px;
+    margin-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #000;
+}
+.iconofheard{
+    padding-right: 10px;
+}

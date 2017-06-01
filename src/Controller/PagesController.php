@@ -38,11 +38,19 @@ class PagesController extends AppController
      *   be found or \Cake\View\Exception\MissingTemplateException in debug mode.
      */
 
+     public function project1_home()
+     {
+
+     }
+
     public function index()
     {
-       
-    }
 
+    }
+    public function index2()
+    {
+
+    }
     public function display()
     {
         $path = func_get_args();
