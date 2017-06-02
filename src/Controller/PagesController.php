@@ -45,7 +45,7 @@ class PagesController extends AppController
 
     public function index()
     {
-
+       
     }
     public function index2()
     {
@@ -54,6 +54,7 @@ class PagesController extends AppController
     public function display()
     {
         $path = func_get_args();
+       
 
         $count = count($path);
         if (!$count) {

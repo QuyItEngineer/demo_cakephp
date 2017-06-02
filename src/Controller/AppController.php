@@ -55,8 +55,13 @@ class AppController extends Controller
             'loginAction' => [
                 'controller' => 'Users',
                 'action' => 'login'
-            ]
-        ]);
+            ],
+            'loginRedirect'=>[
+                'controller' => 'Pages',
+                'action' => 'index'
+            ],
+            'unauthorizedRedirect' => false
+        ]);  
         //$this->Auth->allow();
         /*
          * Enable the following components for recommended CakePHP security settings.

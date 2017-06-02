@@ -1,8 +1,8 @@
-<div class="header-images-index2">
+<!-- <div class="header-images-index2">
 	<div class="dung-chung">
 		<nav class="navbar weight-site" role="navigation">
 			<div class="container-fluid">
-				<!-- Brand and toggle get grouped for better mobile display -->
+			
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
 						<span class="sr-only">Toggle navigation</span>
@@ -13,7 +13,7 @@
 					<a class="navbar-brand" href="#" >MY LOGO</a>
 				</div>
 
-				<!-- Collect the nav links, forms, and other content for toggling -->
+			
 				<div class="collapse navbar-collapse navbar-ex1-collapse">
 					<ul class="nav navbar-nav navbar-right">
 						<li class="active"><a href="#">Home</a></li>
@@ -31,7 +31,7 @@
 
 				</div>
 			</div>
-		</nav>  <!-- the end nav weight-site -->
+		</nav>  
 		<div class="container text-botton-header">
 			<p id="text1">FIND YOUR DREAM HOME</p>
 			<div class="row">
@@ -87,7 +87,7 @@
 		</div> <!-- the end container text-botton-header -->
 	</div> <!-- the end div.dung-chung -->
 
-</div>
+</div> -->
 
 
 <div class="dung-chung">
@@ -334,7 +334,8 @@
 </div>
 <div class="dung-chung hinh-giua">
 	<div class="block_left w40">
-		<img src="../webroot/img/images1.png">
+		<!-- <img src="../webroot/img/images1.png"> -->
+		<div id="calendar"></div>
 	</div>
 	<div class="block_left w60">
 		<p>

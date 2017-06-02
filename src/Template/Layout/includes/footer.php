@@ -28,6 +28,14 @@
     </footer>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
+<script src="https://code.jquery.com/ui/jquery-ui-git.js"></script>
+<script>
+    $('#calendar').datepicker({
+        inline: true,
+        firstDay: 1,
+        showOtherMonths: true,
+        dayNamesMin: ['日', '月', '火', '水', '木', '金', '土']
+    });
+</script>
 </body>
 </html>

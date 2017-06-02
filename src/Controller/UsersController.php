@@ -18,6 +18,14 @@ class UsersController extends AppController
      */
     public function index()
     {
+        $this->paginate= [
+            'limit' => 3,
+            'order' => [    
+                'Users.id' => 'asc'
+            ]
+        ];
+
+
         $users = $this->paginate($this->Users);
 
         $this->set(compact('users'));
@@ -109,11 +117,13 @@ class UsersController extends AppController
     public function login(){
         if($this->Auth->user())
             return $this->redirect($this->Auth->redirectUrl());
+
         if ($this->request->is('post')) {
             $user = $this->Auth->identify();     
             if ($user) {
                 $this->Auth->setUser($user);
-                 return $this->redirect(['controller' => 'posts']);
+
+               return $this->redirect(['controller'=>'Pages','action'=>'display','index']);
                 // if(!empty($this->request->data['remember']) && $this->request->data['remember']=="on"){                       
                 //     $this->Cookie->write('User', $user);
                 // }                 
@@ -132,4 +142,23 @@ class UsersController extends AppController
         $this->Flash->success(__('You logouted success!...'));
         $this->redirect($this->Auth->logout());
     }
+
+
+    public function register(){
+        $user = $this->Users->newEntity();
+        if($this->request->is('post')){
+            $user = $this->Users->patchEntity($user, $this->request->data);
+            if($this->Users->save($user)){
+                $this->Flash->success('You are registered and can login');
+                return $this->redirect(['action' => 'login']);
+            } else {
+                $this->Flash->error('You are not registered');
+            }
+        }
+        $this->set(compact('user'));
+        $this->set('_serialzie', ['user']);
+    }
+    /*public function beforeRender(Event $event){
+        $this->Auth->allow(['register']);
+    }*/
 }

@@ -10,6 +10,9 @@ use App\Controller\AppController;
  */
 class PostsController extends AppController
 {
+    var $helpers = array('Paginator','Html');
+    var $paginate = array();
+
     //public $components = array('Upload');
 
     /**
@@ -19,6 +22,20 @@ class PostsController extends AppController
      */
     public $components = array('Upload');
 
+    // public $paginate = [
+    //     'contain' => ['Users'],
+    //     'limit' => 3,
+    //     'order' => [
+    //         'Posts.id' => 'asc'
+    //     ]
+    // ];
+
+    // public function initialize()
+    // {
+    //     parent::initialize();
+    //     $this->loadComponent('Paginator');
+    // }
+
     public function  showcompo(){
         $data = $this->Data->randd(6);
         $this->set("data",$data);
@@ -26,6 +43,18 @@ class PostsController extends AppController
 
     public function index()
     {
+        $this->paginate = [
+        'contain' => ['Users'],
+        'limit' => 3,
+        'order' => [
+            'Posts.id' => 'asc'
+        ]
+    ];
+        $posts = $this->paginate($this->Posts);
+        $this->set(compact('posts'));
+        $this->set('_serialize', ['posts']);
+    }
+    public function project1home(){
         $this->paginate = [
             'contain' => ['Users']
         ];

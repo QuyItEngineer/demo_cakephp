@@ -49,7 +49,11 @@
                                 </ul>
                             </li>
                             <li><a href="#">News</a></li>
-                            <li><a href="#">Contact</a></li>
+                            <?php if ($logged):?>
+                                <li><?= $this->Html->link('LOGOUT', ['controller' => 'users', 'action' => 'logout'])?></li>
+                            <?php else: ?>
+                                <li><?= $this->Html->link('REGISTER', ['controller' => 'users', 'action' => 'register'])?></li>
+                            <?php endif; ?>
                         </ul>
 
                     </div>
