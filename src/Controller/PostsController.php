@@ -13,6 +13,8 @@ class PostsController extends AppController
     var $helpers = array('Paginator','Html');
     var $paginate = array();
 
+    var $name = 'Posts';
+
     //public $components = array('Upload');
 
     /**
@@ -22,19 +24,47 @@ class PostsController extends AppController
      */
     public $components = array('Upload');
 
-    // public $paginate = [
-    //     'contain' => ['Users'],
-    //     'limit' => 3,
-    //     'order' => [
-    //         'Posts.id' => 'asc'
-    //     ]
-    // ];
+    public function search(){
+        $url['action'] = 'result';
+        if($this->request->is('post'))
+            $data = $this->request->data;
+        if($this->request->is('get'))
+            $data = $this->request->query;
+        foreach ($data as $element_data=>$value_request){  
+                $url[$element_data]=$value_request; 
+        }
+        // redirect the user to the url
+        $this->redirect($url, null, true);
+        
+    }
+    public function result(){
+        $conditions = array();
+        $data = array();
+        $data = $this->request->query;
+         
+        $conditions = [];
+        if(!empty($data)):
+            foreach ($data as $element_data=>$value_request){ 
+                if($element_data=='title'){
+                $conditions[] = array('Posts.title LIKE' => "%".$value_request."%");
+                }
+                else{
+                    $conditions[] = array($element_data => $value_request);
+                }
+            }
+        endif;
 
-    // public function initialize()
-    // {
-    //     parent::initialize();
-    //     $this->loadComponent('Paginator');
-    // }
+        $this->paginate= array(
+            'contain' => ['Users'],
+            'limit' => 3,
+            'order' => array('id' => 'asc'),
+            'conditions'=>$conditions
+        );
+        
+        $this->data = $data;
+        $this->set("posts",$this->paginate("Posts"));
+
+    }
 
     public function  showcompo(){
         $data = $this->Data->randd(6);
@@ -53,6 +83,8 @@ class PostsController extends AppController
         $posts = $this->paginate($this->Posts);
         $this->set(compact('posts'));
         $this->set('_serialize', ['posts']);
+
+        
     }
     public function project1home(){
         $this->paginate = [

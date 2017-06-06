@@ -93,3 +93,6 @@ p.copyright.text-muted.small {
     margin-left: 160px;
     margin-right: 160px;
 }
+input.button {
+    background-color: #2700ff;
+}

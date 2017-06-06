@@ -69,6 +69,7 @@ class UsersTable extends Table
         $validator
             ->requirePresence('password', 'create')
             ->notEmpty('password');
+            ->lengthBettween('password', [4,30]);
 
         $validator
             ->requirePresence('role', 'create')

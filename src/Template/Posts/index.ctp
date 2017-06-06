@@ -64,3 +64,15 @@
         <p><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
     </div>
 </div>
+
+<div class="posts form large-9 medium-8 columns content">
+    <?= $this->Form->create(null,array('url' =>  array('controller' => 'Posts','action' => 'search'))); ?> 
+    <fieldset>
+        <legend><?= __('Post Search') ?></legend>
+        <?php
+            echo $this->Form->input('title');
+        ?>
+    </fieldset>
+    <?= $this->Form->button(__('Submit')) ?>
+    <?= $this->Form->end() ?>
+</div>

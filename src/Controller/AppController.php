@@ -54,6 +54,10 @@ class AppController extends Controller
             ],
             'loginAction' => [
                 'controller' => 'Users',
+                'action' => 'register'
+            ],
+            'loginAction' => [
+                'controller' => 'Users',
                 'action' => 'login'
             ],
             'loginRedirect'=>[
@@ -62,6 +66,7 @@ class AppController extends Controller
             ],
             'unauthorizedRedirect' => false
         ]);  
+        $this->Auth->allow(array('User', 'register'));
         //$this->Auth->allow();
         /*
          * Enable the following components for recommended CakePHP security settings.
