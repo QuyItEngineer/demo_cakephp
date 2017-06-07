@@ -41,4 +41,6 @@ class User extends Entity
     protected $_hidden = [
         'password'
     ];
+
+
 }

@@ -60,6 +60,7 @@ class UsersTable extends Table
         $validator
             ->requirePresence('username', 'create')
             ->notEmpty('username');
+            
 
         $validator
             ->email('email')
@@ -68,8 +69,14 @@ class UsersTable extends Table
 
         $validator
             ->requirePresence('password', 'create')
+            ->add("password", [
+                    "custom" => [
+                        "rule" => [$this, "customFunction"], //add the new rule 'customFunction' to cedula field
+                        "message" => "Enter the value lesser than 8"
+                    ]
+                        ]
+                )
             ->notEmpty('password');
-            ->lengthBettween('password', [4,30]);
 
         $validator
             ->requirePresence('role', 'create')
@@ -99,5 +106,8 @@ class UsersTable extends Table
             $hasher = new DefaultPasswordHasher;
             $entity->password = $hasher->hash($entity->password);
         }
+    }
+    public function customFunction($value, $context) {
+        return $value > 8;
     }
 }
