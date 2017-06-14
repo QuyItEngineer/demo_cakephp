@@ -1,25 +1,25 @@
 .dung-chung{
-	max-width: 1170px;
-	position: relative;
-	margin: 0 auto;
-	padding-top: 20px;
+    max-width: 1170px;
+    position: relative;
+    margin: 0 auto;
+    padding-top: 20px;
 }
 a.navbar-brand {
     padding-left: 100px;
 }
 .collapse.navbar-collapse.navbar-ex1-collapse {padding-right: 100px;}
 .form_login_quy{
-	background-color: 	#A9A9A9;
-	width: 100%;
-	height: 100%;
-	padding: 20px;
+    background-color:   #A9A9A9;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
 }
 #text1{
-	text-align: left;
-	margin-left: 85px;
+    text-align: left;
+    margin-left: 85px;
 }
 .header-images-index2{
-	padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
+    padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
     padding-bottom: 50px;
     text-align: center;
     color: #f8f8f8;
@@ -42,32 +42,32 @@ form.form-banner2-img {
     top: 70px;
 }
 .btn.submit_Signup{
-	background-color: #7bb700;
-	width: 300px;
-	border-style: inset;
-	border-color: #fdfdfd;
+    background-color: #7bb700;
+    width: 300px;
+    border-style: inset;
+    border-color: #fdfdfd;
 }
 .block_left{
-	float: left;
+    float: left;
 }
 .block_right{
-	float: right;
-	/*padding: 10px;*/
+    float: right;
+    /*padding: 10px;*/
 }
 
 .w40{
-	width: 40%;
+    width: 40%;
 }
 .w60{
-	width: 60%;
-	text-align: right;
+    width: 60%;
+    text-align: right;
 }
 select#input {
     width: 100%;
 }
 .style-of-text-botton-header button{
-	width: 100%;
-	text-align: left;
+    width: 100%;
+    text-align: left;
 }
 .container.text-botton-header {
     text-align: center;
@@ -75,16 +75,16 @@ select#input {
     top: 400px;
 }
 /*.chap1{
-	background-color: #e2e1e1;
+    background-color: #e2e1e1;
 }
 */
 .chap1_1{
-	background-color: #f0f0f0;
-	position: relative;
-	margin: 0 auto;
+    background-color: #f0f0f0;
+    position: relative;
+    margin: 0 auto;
 }
 .banner-img{
-	padding: 20px 0px 20px 0px;
+    padding: 20px 0px 20px 0px;
 }
 p.copyright.text-muted.small {
     text-align: center;
@@ -99,4 +99,7 @@ input.button {
 button.btn.btn-default.login-form {
     width: 96%;
     height: 53px;
+}
+.container {
+    min-height: 0%;
 }

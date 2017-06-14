@@ -2,6 +2,10 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Event\Event;
+use Cake\Network\Session;
+use Cake\Http\ServerRequest;
+
 
 /**
  * Users Controller
@@ -11,6 +15,13 @@ use App\Controller\AppController;
 class UsersController extends AppController
 {
 
+    public function initialize()
+    {
+        parent::initialize();
+        $this->Auth->allow(['register']); 
+    }
+    
+    //public $components = array('Session');
     /**
      * Index method
      *
@@ -18,6 +29,9 @@ class UsersController extends AppController
      */
     public function index()
     {
+
+
+
         $this->paginate= [
             'limit' => 3,
             'order' => [    
@@ -139,15 +153,16 @@ class UsersController extends AppController
         }
     }
     public function logout() {
-        $this->Flash->success(__('You logouted success!...'));
-        $this->redirect($this->Auth->logout());
-    }
+            $this->Flash->success(__('You logouted success!...'));
+            $this->redirect($this->Auth->logout());
+        }
 
 
     public function register(){
         $user = $this->Users->newEntity();
         if($this->request->is('post')){
             $user = $this->Users->patchEntity($user, $this->request->data);
+            $user->id = $this->Auth->user('id');
             if($this->Users->save($user)){
                 $this->Flash->success('You are registered and can login');
                 return $this->redirect(['action' => 'login']);
@@ -158,7 +173,10 @@ class UsersController extends AppController
         $this->set(compact('user'));
         $this->set('_serialzie', ['user']);
     }
-    /*public function beforeRender(Event $event){
-        $this->Auth->allow(['register']);
-    }*/
+    public function beforeFilter(Event $event){
+        //$this->Auth->allow(['register']);   
+    }
+
+    
+
 }

@@ -5,6 +5,7 @@ use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
+use Cake\Auth\DefaultPasswordHasher;
 
 /**
  * Users Model
@@ -59,8 +60,13 @@ class UsersTable extends Table
 
         $validator
             ->requirePresence('username', 'create')
+            ->add('username', [
+                'length' => [
+                    'rule' => ['minLength', 10],
+                    'message' => 'Username need to be at least 10 characters long',
+                ]
+            ])
             ->notEmpty('username');
-            
 
         $validator
             ->email('email')
@@ -79,8 +85,11 @@ class UsersTable extends Table
             ->notEmpty('password');
 
         $validator
-            ->requirePresence('role', 'create')
-            ->notEmpty('role');
+            ->notEmpty('role', 'A role is required')
+            ->add('role', 'inList', [
+                'rule' => ['inList', ['admin', 'user']],
+                'message' => 'Please enter a valid role'
+            ]);
 
         return $validator;
     }
@@ -99,7 +108,7 @@ class UsersTable extends Table
 
         return $rules;
     }
-        public function beforeSave(\Cake\Event\Event $event, \Cake\ORM\Entity $entity, 
+            public function beforeSave(\Cake\Event\Event $event, \Cake\ORM\Entity $entity, 
     \ArrayObject $options)
     {     
         if($entity->has('password')){
@@ -108,6 +117,6 @@ class UsersTable extends Table
         }
     }
     public function customFunction($value, $context) {
-        return $value > 8;
+        return $value < 8;
     }
 }

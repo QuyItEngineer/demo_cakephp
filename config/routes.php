@@ -43,6 +43,13 @@ use Cake\Routing\Route\DashedRoute;
  */
 Router::defaultRouteClass(DashedRoute::class);
 
+
+Router::prefix('admin', function($routes){
+    $routes->connect('/admin', ['controller' => 'Admin', 'action' => 'index']);
+    
+    $routes->fallbacks(DashedRoute::class);
+});
+
 Router::scope('/', function (RouteBuilder $routes) {
     /**
      * Here, we are connecting '/' (base path) to a controller called 'Pages',
@@ -51,9 +58,12 @@ Router::scope('/', function (RouteBuilder $routes) {
      */
 
     //$routes->connect('/*', ['controller' => 'Pages', 'action' => 'index']);
+    $routes->connect('/admin/users/logout', ['controller' => 'Users', 'action' => 'logout']);
     $routes->connect('/', ['controller' => 'Pages', 'action' => 'display', 'index']);
 
     $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
+
+    //$routes->connect('posts/result/*', ['controller' => 'Posts', 'action' => 'add']);
 
     /**
      * ...and connect the rest of 'Pages' controller's URLs.
@@ -79,6 +89,7 @@ Router::scope('/', function (RouteBuilder $routes) {
      */
     $routes->fallbacks(DashedRoute::class);
 });
+
 
 /**
  * Load all plugin routes.  See the Plugin documentation on

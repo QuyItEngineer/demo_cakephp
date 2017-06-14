@@ -74,26 +74,19 @@ class PostsController extends AppController
     public function index()
     {
         $this->paginate = [
-        'contain' => ['Users'],
-        'limit' => 3,
-        'order' => [
-            'Posts.id' => 'asc'
-        ]
-    ];
+            'contain' => ['Users'],
+                'limit' => 3,
+                'order' => [
+                    'Posts.id' => 'asc'
+                ]
+            ];
         $posts = $this->paginate($this->Posts);
+
         $this->set(compact('posts'));
         $this->set('_serialize', ['posts']);
 
-        
     }
-    public function project1home(){
-        $this->paginate = [
-            'contain' => ['Users']
-        ];
-        $posts = $this->paginate($this->Posts);
-        $this->set(compact('posts'));
-        $this->set('_serialize', ['posts']);
-    }
+    
 
     /**
      * View method
@@ -131,7 +124,6 @@ class PostsController extends AppController
                 }
 
             }
-            print_r($post);
             if ($this->Posts->save($post)) {
                 $this->Flash->success(__('The post has been saved.'));
 

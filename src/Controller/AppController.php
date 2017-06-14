@@ -16,6 +16,8 @@ namespace App\Controller;
 
 use Cake\Controller\Controller;
 use Cake\Event\Event;
+use Cake\Http\ServerRequest;
+use Cake\Network\Session;
 
 /**
  * Application Controller
@@ -40,7 +42,6 @@ class AppController extends Controller
     public function initialize()
     {
         parent::initialize();
-
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
         $this->loadComponent('Auth', [
@@ -54,27 +55,50 @@ class AppController extends Controller
             ],
             'loginAction' => [
                 'controller' => 'Users',
-                'action' => 'register'
-            ],
-            'loginAction' => [
-                'controller' => 'Users',
-                'action' => 'login'
+                'action' => 'login',
+                'admin' => false
             ],
             'loginRedirect'=>[
+                'prefix'=>false,
                 'controller' => 'Pages',
                 'action' => 'index'
             ],
-            'unauthorizedRedirect' => false
+            'logoutRedirect'=>[
+            'prefix'=>false,
+            'controller'=> 'Users',
+            'action'=>'login'],
+            'autoRedirect' => false,
+            'authorize' => 'controller'
+            /* 'unauthorizedRedirect' => false*/
         ]);  
-        $this->Auth->allow(array('User', 'register'));
-        //$this->Auth->allow();
-        /*
-         * Enable the following components for recommended CakePHP security settings.
-         * see http://book.cakephp.org/3.0/en/controllers/components/security.html
-         */
-        //$this->loadComponent('Security');
-        //$this->loadComponent('Csrf');
+
     }
+
+    public function isAuthorized($user = null)
+    {
+        if (!isset($this->request->params['prefix'])) {
+            return true;
+        }
+
+        // Only admins can access admin functions
+        if ($this->request->params['prefix'] == 'admin') {
+            return (bool)($user['role'] == 'admin');
+        }
+
+        // Default deny
+        return false;
+    }
+
+    // public function checkAdmin(){
+        
+    //     if(!$this->request->session()->check('Auth.User')) --check user logged--
+    //         return false;
+    //     $user = $this->request->session()->read('Auth.User');
+    //         // return (bool)$user['role']=='admin';
+
+    //     if((!$this->isAuthorized($user)) && !($user['role']=='admin'))
+    //         return true;
+    // }
 
     /**
      * Before render callback.
@@ -98,5 +122,8 @@ class AppController extends Controller
         else{
             $this->set('logged', false);
         }
+
     }
+
+
 }
