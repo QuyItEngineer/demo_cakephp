@@ -54,6 +54,18 @@
                             <?php else: ?>
                                 <li><?= $this->Html->link('REGISTER', ['controller' => 'users', 'action' => 'register'])?></li>
                             <?php endif; ?>
+                            <!-- Control Sidebar Toggle Button -->
+                            <li>
+                              <a class="fa fa-gears" type="button" data-toggle="dropdown" aria-haspopup="true">
+                              </a>
+                              <div class="dropdown-menu" >
+                                <a class="dropdown-item" href="http://localhost/mylogin/admin/users">Admin</a>
+                                <a class="dropdown-item" href="http://localhost/mylogin/admin/users/add">Add Admin</a>
+                              </div>
+                            </li>
+
+                                  
+
                         </ul>
 
                     </div>
@@ -79,6 +91,8 @@
                     </div>
                 </div>
             </div>
+            <!-- //////////======//////////============ -->
+
 
         </div>
         <!-- /.container -->

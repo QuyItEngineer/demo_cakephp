@@ -7,7 +7,11 @@
 @import "base.css";
 @import "quy.css";
 @import "project1_css.css";
-@import "all-skins.css";
-@import "all-skins.min.css";
+@import "skin/all-skins.css";
+@import "skin/all-skins.min.css";
 @import "AdminLTE.css";
 @import "AdminLTE.min.css";
+@import "../backend/build/less/forms.less";
+@import "../backend/build/less/buttons.less";
+/*@import "../backend/dist/css/AdminLTE.min.css";
+@import "../backend/dist/css/AdminLTE.css";*/

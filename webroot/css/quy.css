@@ -103,3 +103,25 @@ button.btn.btn-default.login-form {
 .container {
     min-height: 0%;
 }
+.medium-8 {
+    width: 100%;
+}
+.box.box-info {
+    text-align: center;
+    width: 58%;
+    margin-left: 230px;
+    margin-top: 20px;
+}
+button.btn.btn-default {}
+
+button.btn.btn-info.pull-right {
+    margin-right: 90px;
+    width: 50%;
+}
+
+button.btn.btn-default {
+    width: 50%;
+}
+.checkbox {
+    text-align: left;
+}
