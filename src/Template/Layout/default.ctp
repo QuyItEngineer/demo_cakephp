@@ -59,8 +59,8 @@
                               <a class="fa fa-gears" type="button" data-toggle="dropdown" aria-haspopup="true">
                               </a>
                               <div class="dropdown-menu" >
-                                <a class="dropdown-item" href="http://localhost/mylogin/admin/users">Admin</a>
-                                <a class="dropdown-item" href="http://localhost/mylogin/admin/users/add">Add Admin</a>
+                                <a class="dropdown-item" href="http://quydigital.com/admin/users">Admin</a>
+                                <a class="dropdown-item" href="http://quydigital.com/admin/users/add">Add Admin</a>
                               </div>
                             </li>
 

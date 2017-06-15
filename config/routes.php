@@ -44,11 +44,29 @@ use Cake\Routing\Route\DashedRoute;
 Router::defaultRouteClass(DashedRoute::class);
 
 
-Router::prefix('admin', function($routes){
-    $routes->connect('/admin', ['controller' => 'Admin', 'action' => 'index']);
+/*Router::prefix('admin', function($routes){
+    $routes->connect('/admin', ['controller' => 'Admin/Users', 'action' => 'index']);
+    //$routes->connect('/admin/*', ['controller' => 'Admin', 'action' => 'index']);
     
     $routes->fallbacks(DashedRoute::class);
 });
+*/
+// Router::scope(
+//     '/admin',
+//     ['controller' => 'Admin/Users'],
+//     function ($routes) {
+//         $routes->connect('/index', ['action' => 'index']);
+//     }
+// );
+
+Router::scope(
+    '/admin/',
+    ['prefix' => 'admin'],
+    function ($routes) {
+        $routes->connect('/search', ['controller'=>'Users','action' => 'search']);
+        $routes->fallbacks(DashedRoute::class);
+    }
+);
 
 Router::scope('/', function (RouteBuilder $routes) {
     /**
@@ -60,7 +78,6 @@ Router::scope('/', function (RouteBuilder $routes) {
     //$routes->connect('/*', ['controller' => 'Pages', 'action' => 'index']);
     $routes->connect('/admin/users/logout', ['controller' => 'Users', 'action' => 'logout']);
     $routes->connect('/', ['controller' => 'Pages', 'action' => 'display', 'index']);
-
     $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
 
     //$routes->connect('posts/result/*', ['controller' => 'Posts', 'action' => 'add']);

@@ -37,12 +37,43 @@ class UsersController extends AppController
         // }        
     }
 
+    public function search(){
+        $url['action'] = 'index';
+        if($this->request->is('post'))
+            $data = $this->request->data;
+        if($this->request->is('get'))
+            $data = $this->request->query;
+        foreach ($data as $element_data=>$value_request){  
+                $url[$element_data]=$value_request; 
+        }
+        // redirect the user to the url
+        $this->redirect($url, null, true);
+    }
     public function index()
     {
-        $users = $this->paginate($this->Users);
+        $conditions = array();
+        $data = array();
+        $data = $this->request->query;
 
-        $this->set(compact('users'));
-        $this->set('_serialize', ['users']);
+        $conditions = [];
+        if(!empty($data)){
+            foreach ($data as $element_data=>$value_request) {
+                if ($element_data=='username') {
+                    $conditions[] = array('Users.username LIKE'=>"%".$value_request."%");
+                }
+            }
+        }
+
+        $this->paginate = array(
+            'conditions'=>$conditions
+            );
+
+
+        //$users = $this->paginate($this->Users);
+        $this->data = $data;
+        // $this->set(compact('users'));
+        // $this->set('_serialize', ['users']);
+        $this->set("users",$this->paginate("Users"));
     }
 
     /**
@@ -138,4 +169,5 @@ class UsersController extends AppController
     //     }
     //     else echo 2;  
     // }
+    
 }
